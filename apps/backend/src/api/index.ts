@@ -79,7 +79,7 @@ const api = new Hono<ApiContext>()
         where: and(...conditions),
         orderBy: [
           desc(streamer.isLive),
-          desc(streamer.viewerCount),
+          asc(streamer.viewerCount),
           asc(streamer.name),
         ],
       });
