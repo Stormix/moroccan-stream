@@ -1,86 +1,220 @@
-# Hono fullstack template
+# LGamila Stream Platform
 
-This is how I usually structure my side projects, it's a simple template to get started with a fullstack app using Hono, Drizzle, and Vite.
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/stormix/moroccan-stream)
 
-## Project Structure
+<div align="center">
 
-This Turborepo includes the following packages/apps:
+![LGamila Logo](./apps/web/public/lgamila-live.svg)
+
+### LGamila - Moroccan Streaming Platform
+
+A comprehensive platform for discovering and tracking Moroccan streamers on Twitch and Kick, featuring a browser extension, web platform, and robust backend API.
+
+[Download Extension](#browser-extension) · [Report Bug](https://github.com/stormix/moroccan-stream/issues) · [Request Feature](https://github.com/stormix/moroccan-stream/issues)
+
+</div>
+
+---
+
+## Table of Contents
+
+1. [About the Project](#about-the-project)
+2. [Screenshots](#screenshots) 
+3. [What's Inside?](#whats-inside)
+4. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+5. [Usage](#usage)
+6. [Features](#features)
+7. [Roadmap](#roadmap)
+8. [Contributing](#contributing)
+9. [License](#license)
+10. [Contact](#contact)
+11. [Acknowledgments](#acknowledgments)
+
+## About the Project
+
+LGamila is a platform dedicated to the Moroccan streaming community, providing tools to discover and follow Moroccan content creators across Twitch and Kick platforms. The project consists of a browser extension that shows real-time streaming status, a web platform for community engagement, and a robust backend API that tracks streamers across multiple platforms.
+
+### Key Features
+
+- **Real-time Stream Tracking**: Monitor live status across Twitch and Kick
+- **Browser Extension**: Chrome extension showing live Moroccan streamers
+- **Web Platform**: Community-driven platform for discovering streamers
+- **Streamer Suggestions**: Community can suggest new streamers to add
+- **Cross-platform Support**: Unified view of streamers across multiple platforms
+
+## Screenshots
+
+<!-- Add screenshots here when available -->
+*Screenshots coming soon...*
+
+## What's Inside?
+
+This monorepo includes the following packages/apps:
 
 ### Apps
 
-- `backend`: Backend service
-- `client`: Web client application
+- `backend`: A [Hono](https://hono.dev/) + [Bun](https://bun.sh/) API server with real-time stream tracking
+- `web`: An [Astro](https://astro.build/) web application for the community platform  
+- `extension`: A [Plasmo](https://docs.plasmo.com/) browser extension for Chrome
 
 ### Packages
 
-- `@moroccan-stream/typescript-config`: TypeScript configurations used throughout the monorepo
-
-## Tech Stack
-
-- [Turborepo](https://turbo.build/repo) for monorepo management
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-- [Bun](https://bun.sh/) as the package manager and runtime
-- [Drizzle](https://orm.drizzle.team/) for database access
-- [Hono](https://hono.dev/) for the API
-- [Vite](https://vitejs.dev/) for the frontend build
-- [Tailwind CSS](https://tailwindcss.com/) for styling
-- [React](https://react.dev/) for the frontend
+- `@moroccan-stream/shared`: Shared utilities and type definitions
+- `@moroccan-stream/logging`: Structured logging with context support and Sentry integration
+- `@moroccan-stream/typescript-config`: TypeScript configurations
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js >= 18
-- Bun >= 1.2.8
-- Docker (optional, for local development)
+- pnpm (recommended package manager)
+- Docker (for local database, optional)
+- PostgreSQL database
+- Redis server
 
 ### Installation
 
-1. Clone the repository
-2. Install dependencies:
-   ```sh
-   bun install
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/stormix/moroccan-stream.git
+   cd moroccan-stream
    ```
 
-### Development
+2. **Install dependencies:**
+   ```bash
+   npm install -g pnpm
+   pnpm install
+   ```
 
-To start development:
+3. **Set up environment variables:**
+   ```bash
+   cp .env.example .env
+   ```
+   Fill in the required environment variables in `.env` file.
 
-```sh
-# Start all apps in development mode
-bun dev
+4. **Set up the database:**
+   ```bash
+   # Push database schema
+   pnpm --filter backend db:push
+   
+   # Generate and run migrations (optional)
+   pnpm --filter backend db:generate
+   pnpm --filter backend db:migrate
+   ```
 
-# Start with Docker
-bun docker
-```
+5. **Start the development servers:**
+   ```bash
+   # Start all apps
+   pnpm dev
+   
+   # Or start individual apps
+   pnpm --filter backend dev    # Backend API
+   pnpm --filter web dev        # Web platform  
+   pnpm --filter extension dev  # Browser extension
+   ```
 
-### Build
+## Usage
 
-To build all apps and packages:
+### Backend API
 
-```sh
-bun build
-```
+The backend provides a REST API for accessing streamer data:
 
-### Other Commands
+- `GET /api/streamers` - Get list of streamers with optional filtering
+- `GET /api/streamers/multi` - Get streamers active on multiple platforms
+- `POST /api/streamers/suggest` - Suggest a new streamer
 
-```sh
-# Run linting
-bun lint
+### Browser Extension
 
-# Run type checking
-bun check-types
+1. Build the extension: `pnpm --filter extension build`
+2. Load the extension in Chrome from `apps/extension/build/chrome-mv3-prod`
+3. The extension will show live Moroccan streamers in the popup
 
-# Format code
-bun format
-```
+### Web Platform
+
+Visit the web platform to:
+- Discover new Moroccan streamers
+- Suggest streamers to be added to the platform
+- Learn about the project
+
+## Features
+
+- **Cross-platform Streaming Support**: Tracks streamers on both Twitch and Kick
+- **Real-time Updates**: Background workers continuously check stream status
+- **Browser Extension**: Chrome extension with live streamer notifications
+- **Community Driven**: Users can suggest new streamers to add
+- **Modern Tech Stack**: Built with TypeScript, Hono, Astro, and Plasmo
+- **Scalable Architecture**: Monorepo structure with shared packages
+- **Type Safety**: Full TypeScript support across all applications
+- **Database Integration**: PostgreSQL with Drizzle ORM
+- **Caching Layer**: Redis for performance optimization
+- **Structured Logging**: Comprehensive logging with Sentry integration
+
+## Roadmap
+
+- [ ] Mobile application
+- [ ] Discord bot integration  
+- [ ] Stream analytics and insights
+- [ ] Multi-language support
+- [ ] Community features (chat, forums)
+- [ ] Streamer verification system
+- [ ] Advanced filtering and search
+- [ ] YouTube integration
 
 ## Contributing
 
-Please read our contributing guidelines before submitting pull requests.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Follow the existing code style and conventions
+- Add tests for new features
+- Update documentation as needed
+- Use conventional commits format
+- Ensure all checks pass before submitting PR
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**Note**: This project is not affiliated with Twitch, Kick, or any of their parent companies. All trademarks are the property of their respective owners.
+
+## Contact
+
+**Stormix** - [@stormix_dev](https://twitter.com/stormix_dev) - hello@stormix.dev
+
+**Project Link**: [https://github.com/stormix/moroccan-stream](https://github.com/stormix/moroccan-stream)
+
+## Acknowledgments
+
+This project was made possible thanks to the amazing open source community and the Moroccan streaming community, especially:
+
+- [Zikoos Jam](https://www.twitch.tv/zikoos_jam) - Original project inspiration
+- [EKB9816](https://x.com/ekb9816) - Project collaborator
+- [Hono](https://hono.dev/) - Fast web framework
+- [Astro](https://astro.build/) - Modern web framework  
+- [Plasmo](https://docs.plasmo.com/) - Browser extension framework
+- [Drizzle ORM](https://orm.drizzle.team/) - TypeScript ORM
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
+- [Turborepo](https://turbo.build/repo) - Monorepo management
+- [Twitch API](https://dev.twitch.tv/) - Twitch platform integration
+- [Kick API](https://kick.com/) - Kick platform integration
+
+---
+
+<p align="center">
+  Made with ❤️ by the Moroccan Streaming Community
+</p>

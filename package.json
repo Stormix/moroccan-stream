@@ -1,4 +1,17 @@
 {
+  "name": "moroccan-stream",
+  "version": "1.0.0",
+  "description": "A comprehensive platform for discovering and tracking Moroccan streamers on Twitch and Kick",
+  "homepage": "https://github.com/stormix/moroccan-stream#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stormix/moroccan-stream.git"
+  },
+  "author": "Stormix <hello@stormix.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stormix/moroccan-stream/issues"
+  },
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
