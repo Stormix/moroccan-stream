@@ -19,18 +19,16 @@ A comprehensive platform for discovering and tracking Moroccan streamers on Twit
 ## Table of Contents
 
 1. [About the Project](#about-the-project)
-2. [Screenshots](#screenshots) 
+2. [Screenshots](#screenshots)
 3. [What's Inside?](#whats-inside)
 4. [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
 5. [Usage](#usage)
-6. [Features](#features)
-7. [Roadmap](#roadmap)
-8. [Contributing](#contributing)
-9. [License](#license)
-10. [Contact](#contact)
-11. [Acknowledgments](#acknowledgments)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Contact](#contact)
+9. [Acknowledgments](#acknowledgments)
 
 ## About the Project
 
@@ -47,7 +45,8 @@ LGamila is a platform dedicated to the Moroccan streaming community, providing t
 ## Screenshots
 
 <!-- Add screenshots here when available -->
-*Screenshots coming soon...*
+
+_Screenshots coming soon..._
 
 ## What's Inside?
 
@@ -56,7 +55,7 @@ This monorepo includes the following packages/apps:
 ### Apps
 
 - `backend`: A [Hono](https://hono.dev/) + [Bun](https://bun.sh/) API server with real-time stream tracking
-- `web`: An [Astro](https://astro.build/) web application for the community platform  
+- `web`: An [Astro](https://astro.build/) web application for the community platform
 - `extension`: A [Plasmo](https://docs.plasmo.com/) browser extension for Chrome
 
 ### Packages
@@ -78,41 +77,47 @@ This monorepo includes the following packages/apps:
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/stormix/moroccan-stream.git
    cd moroccan-stream
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install -g pnpm
    pnpm install
    ```
 
 3. **Set up environment variables:**
+
    ```bash
    cp .env.example .env
    ```
+
    Fill in the required environment variables in `.env` file.
 
 4. **Set up the database:**
+
    ```bash
    # Push database schema
    pnpm --filter backend db:push
-   
+
    # Generate and run migrations (optional)
    pnpm --filter backend db:generate
    pnpm --filter backend db:migrate
    ```
 
 5. **Start the development servers:**
+
    ```bash
    # Start all apps
    pnpm dev
-   
+
    # Or start individual apps
    pnpm --filter backend dev    # Backend API
-   pnpm --filter web dev        # Web platform  
+   pnpm --filter web dev        # Web platform
    pnpm --filter extension dev  # Browser extension
    ```
 
@@ -135,33 +140,10 @@ The backend provides a REST API for accessing streamer data:
 ### Web Platform
 
 Visit the web platform to:
+
 - Discover new Moroccan streamers
 - Suggest streamers to be added to the platform
 - Learn about the project
-
-## Features
-
-- **Cross-platform Streaming Support**: Tracks streamers on both Twitch and Kick
-- **Real-time Updates**: Background workers continuously check stream status
-- **Browser Extension**: Chrome extension with live streamer notifications
-- **Community Driven**: Users can suggest new streamers to add
-- **Modern Tech Stack**: Built with TypeScript, Hono, Astro, and Plasmo
-- **Scalable Architecture**: Monorepo structure with shared packages
-- **Type Safety**: Full TypeScript support across all applications
-- **Database Integration**: PostgreSQL with Drizzle ORM
-- **Caching Layer**: Redis for performance optimization
-- **Structured Logging**: Comprehensive logging with Sentry integration
-
-## Roadmap
-
-- [ ] Mobile application
-- [ ] Discord bot integration  
-- [ ] Stream analytics and insights
-- [ ] Multi-language support
-- [ ] Community features (chat, forums)
-- [ ] Streamer verification system
-- [ ] Advanced filtering and search
-- [ ] YouTube integration
 
 ## Contributing
 
@@ -202,9 +184,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 This project was made possible thanks to the amazing open source community and the Moroccan streaming community, especially:
 
 - [Zikoos Jam](https://www.twitch.tv/zikoos_jam) - Original project inspiration
-- [EKB9816](https://x.com/ekb9816) - Project collaborator
+- [EKB9816](https://x.com/ekb9816) - Project designer and logo creator
 - [Hono](https://hono.dev/) - Fast web framework
-- [Astro](https://astro.build/) - Modern web framework  
+- [Astro](https://astro.build/) - Modern web framework
 - [Plasmo](https://docs.plasmo.com/) - Browser extension framework
 - [Drizzle ORM](https://orm.drizzle.team/) - TypeScript ORM
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
