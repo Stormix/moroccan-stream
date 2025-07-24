@@ -1,6 +1,7 @@
 # LGamila Stream Platform
 
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/stormix/lgamila)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/Stormix/lgamila?utm_source=oss&utm_medium=github&utm_campaign=Stormix%2Flgamila&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
 <div align="center">
 
